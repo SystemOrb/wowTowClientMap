@@ -1,0 +1,29 @@
+<header class="topbar bg-wowtow">
+    <nav class="navbar top-navbar navbar-expand-md navbar-light">
+        <div class="navbar-header">
+            <a [routerLink]="['/profile']" class="navbar-brand">
+                <b>
+                    <img width="80"  src="./assets/images/users/2.jpg" alt="homepage" class="img-circle img-rounded dark-logo" />
+                </b>
+                <span>
+                </span>
+            </a>
+        </div>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <!-- This is  -->
+                <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                <li class="nav-item hidden-sm-down"></li>
+            </ul>
+            <ul class="navbar-nav my-lg-0">
+                <li class="nav-item hidden-xs-down search-box"> <a class="nav-link hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                    <form class="app-search">
+                        <input (keyup)="LoadPLaces();" autocorrect="off" autocapitalize="off" #searchLocation spellcheck="off" type="text" class="form-control" placeholder="Search a location">
+                        <a class="srh-btn"><i class="ti-close"></i></a>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

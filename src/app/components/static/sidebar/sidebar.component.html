@@ -1,0 +1,35 @@
+<aside class="left-sidebar bg-wowtow">
+    <div class="scroll-sidebar bg-wowtow">
+        <nav class="sidebar-nav bg-wowtow">
+            <ul id="sidebarnav">
+                <li>
+                    <a [routerLink]="['/home']" [routerLinkActive]="['active']" class="has-arrow waves-effect waves-dark" aria-expanded="false">
+                        <i class="mdi mdi-home-outline"></i>&nbsp;
+                        <span class="hide-menu">Home</span></a>
+                </li>
+                <li>
+                    <a [routerLink]="['/history']" [routerLinkActive]="['active']" class="has-arrow waves-effect waves-dark" aria-expanded="false">
+                        <i class="mdi mdi-clock"></i>&nbsp;
+                        <span class="hide-menu">History</span></a>
+                </li>
+                <li>
+                    <a [routerLink]="['/notification']" [routerLinkActive]="['active']" class="has-arrow waves-effect waves-dark" aria-expanded="false">
+                        <i class="mdi mdi-clipboard-check"></i>&nbsp;
+                        <span class="hide-menu">Notification</span></a>
+                </li>
+                <li>
+                    <a [routerLink]="['/support']" [routerLinkActive]="['active']" class="has-arrow waves-effect waves-dark" aria-expanded="false">
+                        <i class="mdi mdi-comment-question-outline"></i>&nbsp;
+                        <span class="hide-menu">Support</span></a>
+                </li>
+                <li>
+                    <a onclick="return false;" class="has-arrow waves-effect waves-dark" aria-expanded="false">
+                        <i class="mdi mdi-logout"></i>&nbsp;
+                        <span class="hide-menu">Logout</span></a>
+                </li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>

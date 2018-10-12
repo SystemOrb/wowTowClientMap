@@ -1,0 +1,56 @@
+<style>
+    .row-map {
+        position: fixed;
+        z-index: 5000;
+        margin-top: 1em;
+    }
+</style>
+<div class="container row-map">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="space-20"></div>
+                <h3 class="card-title openSansProBold text-center">
+                    Sale Tax Calculator
+                </h3>
+                <div class="card-body">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem impedit sapiente totam. Voluptate incidunt sapiente unde, quaerat suscipit harum maiores veritatis assumenda cumque doloribus aut ea, omnis exercitationem natus tenetur.
+                    </p>
+                </div>
+                <div class="soft-tiny palm-push--sides bg-primary-layer-color pointer-events--all hidden--palm">
+                    <div class="bg-primary-layer-color pointer-events--all">
+                        <div class="position--relative">
+                            <div class="fare-estimate__input-connector z-10"></div>
+                            <div class="fare-estimate__pickup push-tiny--bottom">
+                                <div class="autocomplete-container">
+                                    <div class="autocomplete position--relative">
+                                        <div class="autocomplete__input hard flush--bottom autocomplete__input--icon">
+                                            <div>
+                                                <input value="" placeholder="Ingresa el punto de partida" autocomplete="off" aria-label="Ingresa un punto de partida: dirección, ciudad y estado requeridos">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="_style_4nVh08 fare-estimate__destination-row">
+                                <div class="_style_VxPAE fare-estimate__destination">
+                                    <div class="autocomplete-container">
+                                        <div class="autocomplete position--relative">
+                                            <div class="autocomplete__input hard flush--bottom autocomplete__input--icon">
+                                                <div><input value="" placeholder="Ingresa un destino" autocomplete="off" aria-label="Ingresa un destino: dirección, ciudad y estado requeridos"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<agm-map [latitude]="_mapAutocomplete.lat" [longitude]="_mapAutocomplete.lng" [zoom]="_mapAutocomplete.zoom">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
