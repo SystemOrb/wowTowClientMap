@@ -4,8 +4,12 @@
         z-index: 5000;
         margin-top: 1em;
     }
+    
+    .list-group .list-group-item:hover {
+        background-color: #F0EEED;
+    }
 </style>
-<div class="container row-map">
+<div *ngIf="_calculator.displayPopTax" class="container row-map">
     <div class="row">
         <div class="col-md-6">
             <div class="card">
@@ -27,7 +31,7 @@
                                     <div class="autocomplete position--relative">
                                         <div class="autocomplete__input hard flush--bottom autocomplete__input--icon">
                                             <div>
-                                                <input value="" placeholder="Ingresa el punto de partida" autocomplete="off" aria-label="Ingresa un punto de partida: dirección, ciudad y estado requeridos">
+                                                <input (keyup)="LoadPLacesFrom()" #from value="" placeholder="Ingresa el punto de partida" autocomplete="off" aria-label="Ingresa un punto de partida: dirección, ciudad y estado requeridos">
                                             </div>
                                         </div>
                                     </div>
@@ -38,19 +42,44 @@
                                     <div class="autocomplete-container">
                                         <div class="autocomplete position--relative">
                                             <div class="autocomplete__input hard flush--bottom autocomplete__input--icon">
-                                                <div><input value="" placeholder="Ingresa un destino" autocomplete="off" aria-label="Ingresa un destino: dirección, ciudad y estado requeridos"></div>
+                                                <div><input (keyup)="LoadPLacesTo()" #to value="" placeholder="Ingresa un destino" autocomplete="off" aria-label="Ingresa un destino: dirección, ciudad y estado requeridos"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
+                <div class="space-20"></div>
+                <div *ngIf="_intelliSense.destiny.lat !== 0 && _intelliSense.origin.lat !== 0" class="_style_4nVh08 fare-estimate__destination-row">
+                    <div class="_style_VxPAE fare-estimate__destination">
+                        <div class="autocomplete-container">
+                            <div class="autocomplete position--relative">
+                                <form>
+                                    <ul class="list-group">
+                                        <li (click)="OpenDialog(_calculator.AutomobileHook)" class="list-group-item d-flex justify-content-between align-items-center">Hook truck
+                                            <span class="badge badge-dark badge-pill font-16">{{_calculator.AutomobileHook.Total | number}} $</span>
+                                        </li>
+                                        <li (click)="OpenDialog(_calculator.AutomobileFlat)" class="list-group-item d-flex justify-content-between align-items-center">Flatbet
+                                            <span class="badge badge-dark badge-pill font-16">{{_calculator.AutomobileFlat.Total | number}} $</span>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-20"></div>
             </div>
         </div>
     </div>
 </div>
 <agm-map [latitude]="_mapAutocomplete.lat" [longitude]="_mapAutocomplete.lng" [zoom]="_mapAutocomplete.zoom">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    <agm-marker *ngIf="_intelliSense.destiny.lat === 0" [latitude]="lat" [longitude]="lng"></agm-marker>
+    <agm-direction [renderOptions]="renderOption" [markerOptions]="markerOptions" *ngIf="_intelliSense.origin.lat !== 0 && _intelliSense.destiny.lat !== 0" [origin]="_intelliSense.origin" [destination]="_intelliSense.destiny"></agm-direction>
+    <ng-container *ngIf="onTracking">
+        <agm-direction *ngFor="let tracking of GraphicOrders" [origin]="{lat:tracking.fromLng, lng:tracking.fromLat}" [destination]="{lat:tracking.toLat, lng:tracking.toLng}" [renderOptions]="renderOption" [markerOptions]="markerOptions"></agm-direction>
+    </ng-container>
 </agm-map>

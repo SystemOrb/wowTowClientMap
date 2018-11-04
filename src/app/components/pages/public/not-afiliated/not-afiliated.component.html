@@ -1,0 +1,70 @@
+<section id="wrapper">
+    <div class="login-register" style="background-image:url(./assets/images/template/hong-kong-1990268_1920.jpg);">
+        <div style="border-radius: 20px; margin-top: -3em !important" class="login-box card">
+            <div class="card-body">
+                <form ngNativeValidate #afiliated="ngForm" (ngSubmit)="afiliatedCustomer(afiliated)" class="form-horizontal form-material" id="loginform">
+                    <h3 class="box-title m-b-20 text-center">
+                        <img style="width:80px;" src="./assets/images/template/Logo.png" alt="woowtow_branding">
+                    </h3>
+                    <div class="col-xs-12">
+                        <mat-form-field class="input-full-width">
+                            <input ngModel type="text" name="name" class="openSansProExtraLight font-20" required matInput placeholder="Name">
+                        </mat-form-field>
+                        &nbsp;
+                        <button mat-raised-button matTooltip="We need to know your name so the service provider can make sure it’s you when they arrive to help.">
+                             Why?
+                            </button>
+                    </div>
+                    <div class="col-xs-12">
+                        <mat-form-field class="input-full-width2">
+                            <input ngModel name="email" type="email" class="openSansProExtraLight font-20" required matInput placeholder="Email">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-xs-12">
+                        <mat-form-field class="input-full-width2">
+                            <input ngModel name="password" type="password" class="openSansProExtraLight font-20" required matInput placeholder="Password">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-xs-12">
+                        <mat-form-field class="input-full-width">
+                            <span matPrefix>+1 &nbsp;</span>
+                            <input ngModel class="openSansProExtraLight font-20" name="phone" required type="tel" matInput placeholder="Telephone">
+                        </mat-form-field>
+                        &nbsp;
+                        <button mat-raised-button matTooltip="We need your phone number in case the driver has trouble finding you.">
+                                    Why?
+                            </button>
+                    </div>
+                    <div class="col-xs-12">
+                        <mat-form-field class="input-full-width">
+                            <input ngModel class="openSansProExtraLight font-20" name="car_plate" required class="openSansProExtraLight font-20" required matInput placeholder="Vehicle Registration Number">
+                        </mat-form-field>
+                        &nbsp;
+                        <button mat-raised-button matTooltip="We need your Vehicle Registration Number so we can retrieve your vehicle information and place in the app. We need to know these details to ensure we provide the right assistance and our service provider can find your vehicle when they reach your location.">
+                                 Why?
+                                </button>
+                    </div>
+                    <div class="col-xs-12">
+                        <mat-form-field class="input-full-width">
+                            <input ngModel class="openSansProExtraLight font-20" name="car_name" required class="openSansProExtraLight font-20" required matInput placeholder="Vehicle Name">
+                        </mat-form-field>
+                        &nbsp;
+                        <button mat-raised-button matTooltip="Example: Ford Explore, We must need this field for security">
+                                     Why?
+                                    </button>
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="col-xs-12 p-b-20">
+                            <button class="btn btn-block btn-lg btn-info btn-rounded openSansProRegular font-20 bg-yellow text-dark" type="submit">Start recovery now!</button>
+                        </div>
+                    </div>
+                    <div class="form-group m-b-0">
+                        <div class="col-sm-12 text-center">
+                            You have an account? <a [routerLink]="['/public/login']" class="text-info m-l-5"><b>Skip this with login now!</b></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

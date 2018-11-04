@@ -11,6 +11,9 @@
     <link href="./assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="./assets/css/style.css" rel="stylesheet">
     <link href="./assets/css/colors/default-dark.css" id="theme" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="./assets/css/pages/login-register-lock.css" rel="stylesheet">
+    <script src="https://checkout.stripe.com/checkout.js"></script>
 </head>
 
 <body class="fix-header card-no-border fix-sidebar">
@@ -20,8 +23,15 @@
             <p class="loader__label">Woowtow | Client Service</p>
         </div>
     </div>
+    <script>
+        var checkoutHandler = StripeCheckout.configure({
+            key: "pk_test_CAdqELuEhU4gNp3aiTsyyCTD",
+            locale: "auto"
+        });
+    </script>
     <app-root></app-root>
     <script src="./assets/plugins/jquery/jquery.min.js"></script>
+    <script src="./assets/js/charge.js"></script>
     <script src="./assets/plugins/bootstrap/js/popper.min.js"></script>
     <script src="./assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="./assets/js/perfect-scrollbar.jquery.min.js"></script>

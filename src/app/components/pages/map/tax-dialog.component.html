@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>{{data.name}} TAX</h1>
+<div class="text-center" mat-dialog-content>
+    <div class="space-10"></div>
+    <div class="col-md-12">
+        <p>
+            Extra Miles: $&nbsp;<span [innerText]="data.ExtraDistance | number" class="badge badge-success"></span>
+        </p>
+        <p>
+            Extra Distance per Mile: $&nbsp;<span [innerText]="data.ChargeByDistance | number" class="badge badge-success"></span>
+        </p>
+        <p>
+            Total Towing: $&nbsp;<span [innerText]="data.TotalTowing | number" class="badge badge-success"></span>
+        </p>
+        <p>
+            Dispatch Fee: $&nbsp;<span [innerText]="data.DispatchFee | number" class="badge badge-success"></span>
+        </p>
+        <p>
+            Total Charge: $&nbsp;<span [innerText]="data.Total | number" class="badge badge-success"></span>
+        </p>
+        <p>
+            WoowTow Fee: $&nbsp;<span [innerText]="data.WoowTowFee | number" class="badge badge-success"></span>
+        </p>
+        <p>
+            Tow Employer Fee: $&nbsp;<span [innerText]="data.Gruas | number" class="badge badge-success"></span>
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit corrupti provident deleniti! Sapiente rerum alias dolorem itaque perspiciatis officia nostrum aspernatur eum libero doloremque vitae accusamus, voluptate quia maxime excepturi?
+        </p>
+    </div>
+    <!--<mat-form-field>
+        <input matInput [(ngModel)]="data.animal">
+    </mat-form-field>-->
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+    <form id="dataPaymentCache" #temporal="ngForm" ngNativeValidate (ngSubmit)="saveLocalStorage(temporal)">
+        <fieldset style="display: none">
+            <input [(ngModel)]="customer.token" name="tokenCli" type="hidden" id="tokenCli" [value]="customer.token">
+            <input [(ngModel)]="customer._id" name="customer" type="hidden" id="customer" [value]="customer._id">
+            <input [(ngModel)]="data.Total" name="TotalTowing" type="hidden" id="TotalTowing" [value]="data.Total | number | decimal">
+            <input [(ngModel)]="ENVIROMENT" name="dirname" type="hidden" id="dirname" [value]="ENVIROMENT">
+            <input [(ngModel)]="customer.wowTowCustomer.vehicle._id" name="car_token" type="hidden" id="car_token" [value]="customer.wowTowCustomer.vehicle._id">
+            <input [(ngModel)]="data.fromLng" type="hidden" id="fromLng" name="fromLng" [value]="data.fromLng">
+            <input [(ngModel)]="data.fromLat" type="hidden" id="fromLat" name="fromLat" [value]="data.fromLat">
+            <input [(ngModel)]="data.toLng" type="hidden" id="toLng" name="toLng" [value]="data.toLng">
+            <input [(ngModel)]="data.toLat" type="hidden" id="toLat" name="toLat" [value]="data.toLat">
+        </fieldset>
+        <button id="buttonCheckout" type="submit" mat-button>Payment Now!</button>
+    </form>
+</div>

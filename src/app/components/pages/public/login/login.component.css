@@ -1,0 +1,26 @@
+.bg-login {
+    background-image: url('../../../../../assets/images/template/car-1149997_1920.jpg');
+    background-size: cover;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.example-container>* {
+    width: 100%;
+}
+
+.input-full-width {
+    width: 70%;
+}
+
+.input-full-width2 {
+    width: 100%;
+}
+
+.bg-yellow {
+    background-color: rgb(248, 236, 50);
+    border: 0px;
+}

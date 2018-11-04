@@ -1,7 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './components/pages/main.component';
 import { NotFoundComponent } from './components/pages/public/not-found/not-found.component';
-import { LoginComponent } from './components/pages/public/login/login.component';
+import { PublicComponent } from './components/pages/public/public.component';
 
 const routes: Routes = [
      {
@@ -9,8 +9,12 @@ const routes: Routes = [
          component: MainComponent,
          loadChildren: './components/pages/pages.module#PagesModule'
      },
+     {
+         path: 'public',
+         component: PublicComponent,
+         loadChildren: './components/pages/public/public.module#PublicModule'
+     },
      {path: '**', component: NotFoundComponent},
-     {path: 'login', component: LoginComponent}
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(routes, {useHash: false});
