@@ -13,8 +13,9 @@ import {MatSnackBar} from '@angular/material';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor(private _router: Router, private _auth: AuthService, private snackBar: MatSnackBar) { }
+  invalid: boolean;
+  loader: boolean = false;
+  constructor(private _router: Router, public _auth: AuthService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     const client = new Client(null, Auth.value.email, null, Auth.value.password);
+    this.loader = true;
     const Authentication = await this.loginCustomer(client);
     if (Authentication.status) {
       const Vehicle = await this.loginVehicle(Authentication.client._id);
@@ -36,7 +38,7 @@ export class LoginComponent implements OnInit {
           null, {
             duration: 3000
           });
-          setTimeout((): void => {this._router.navigate(['/home']); }, 4000);
+          setTimeout((): void => {this._router.navigate(['/']); }, 1000);
         }
       }
     }

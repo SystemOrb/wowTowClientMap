@@ -61,6 +61,56 @@ Material
     src: url('./assets/fonts/SourceSansPro-Black.ttf')
 }
 
+@font-face {
+    font-family: 'Gotham-Black';
+    src: url('./assets/fonts/GOTHAM-BLACK.ttf');
+}
+
+@font-face {
+    font-family: 'Gotham-BlackItalic';
+    src: url('./assets/fonts/GOTHAM-BLACKITALIC.ttf');
+}
+
+@font-face {
+    font-family: 'Gotham-Book';
+    src: url('./assets/fonts/Gotham-Book.otf');
+}
+
+@font-face {
+    font-family: 'Gotham-BookItalic';
+    src: url('./assets/fonts/Gotham-BookItalic.otf');
+}
+
+@font-face {
+    font-family: 'Gotham-Medium';
+    src: url('./assets/fonts/Gotham-Medium.otf');
+}
+
+@font-face {
+    font-family: 'Gotham-MediumItalic';
+    src: url('./assets/fonts/Gotham-MediumItalic.otf');
+}
+
+@font-face {
+    font-family: 'Gotham-Thin';
+    src: url('./assets/fonts/Gotham-Thin.otf');
+}
+
+@font-face {
+    font-family: 'Gotham-ThinItalic';
+    src: url('./assets/fonts/Gotham-ThinItalic.otf');
+}
+
+@font-face {
+    font-family: 'Gotham-Ultra';
+    src: url('./assets/fonts/Gotham-Ultra.otf');
+}
+
+@font-face {
+    font-family: 'Gotham-UltraItalic';
+    src: url('./assets/fonts/Gotham-UltraItalic.otf');
+}
+
 
 /* Default font sizes */
 
@@ -133,6 +183,46 @@ Material
 
 .openSansProExtraBold {
     font-family: 'OpenSansPro-SemiBold', serif;
+}
+
+.Gotham-black {
+    font-family: 'Gotham-Black', Geneva, Tahoma, sans-serif;
+}
+
+.Gotham-UltraItalic {
+    font-family: 'Gotham-UltraItalic', Geneva, Tahoma, sans-serif;
+}
+
+.Gotham-Ultra {
+    font-family: 'Gotham-Ultra', Geneva, Tahoma, sans-serif;
+}
+
+.Gotham-ThinItalic {
+    font-family: 'Gotham-ThinItalic', Geneva, Tahoma, sans-serif;
+}
+
+.Gotham-Thin {
+    font-family: 'Gotham-Thin', Geneva, Tahoma, sans-serif;
+}
+
+.Gotham-MediumItalic {
+    font-family: 'Gotham-MediumItalic', Geneva, Tahoma, sans-serif;
+}
+
+.Gotham-Medium {
+    font-family: 'Gotham-Medium', Geneva, Tahoma, sans-serif;
+}
+
+.Gotham-BookItalic {
+    font-family: 'Gotham-BookItalic', Geneva, Tahoma, sans-serif;
+}
+
+.Gotham-Book {
+    font-family: 'Gotham-Book', Geneva, Tahoma, sans-serif;
+}
+
+.Gotham-BlackItalic {
+    font-family: 'Gotham-BlackItalic', Geneva, Tahoma, sans-serif;
 }
 
 .bg-turno-primary {

@@ -53,7 +53,7 @@ export class NotAfiliatedComponent implements OnInit {
             null, {
               duration: 3000
             });
-            setTimeout((): void => {this._router.navigate(['/home']); }, 4000);
+            setTimeout((): void => {this._router.navigate(['/']); }, 4000);
           }
         }
     }

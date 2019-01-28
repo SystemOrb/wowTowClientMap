@@ -9958,3 +9958,7 @@ html {
 .sub-wrapper {
     background: #E5E5E4
 }
+
+.button-redounded {
+    border-radius: 10px;
+}

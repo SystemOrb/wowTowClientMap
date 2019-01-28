@@ -7,6 +7,12 @@ import {MatDialog} from '@angular/material';
 import { TaxDialogComponent } from './tax-dialog.component';
 import { PartialObserver } from 'rxjs';
 import { GraphicalsOrdersService } from '../../../services/maps/graphicals-orders.service';
+import { MAP_INTERFACE } from 'src/app/Routes/routes';
+import * as $ from 'jquery';
+import { Socket } from 'ngx-socket-io';
+import { ServiceComponent } from './service.component';
+
+// declare function GetRoutingId(content): string;
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -17,7 +23,11 @@ export class MapComponent implements OnInit {
   public searchElementRef: ElementRef;
   @ViewChild('to')
   public searchElementRef2: ElementRef;
+  /*Theme */
+  public MapStyles = MAP_INTERFACE;
+
   lat: number;
+  public title: 'hola';
   lng: number;
   zoom: number;
   public GraphicOrders: any[] = [];
@@ -27,12 +37,12 @@ export class MapComponent implements OnInit {
   };
   public markerOptions = {
     origin: {
-        icon: './assets/images/map/map-marker-8.png',
+        icon: './assets/images/map/destination.png',
         draggable: false,
-        opacity: 1
+        opacity: 1,
     },
     destination: {
-        icon: './assets/images/map/map-marker-8.png',
+        icon: './assets/images/map/baseline_zoom_out_map_white_48dp.png',
         opacity: 1,
         dragabble: false
     },
@@ -40,10 +50,18 @@ export class MapComponent implements OnInit {
   constructor(public _mapAutocomplete: AutocompleteService, public _intelliSense: AutocompleteService,
     private mapsAPILoader: MapsAPILoader,
     private ngZone: NgZone, public _calculator: CalculatorService, public dialog: MatDialog,
-    private _graphicInTracking: GraphicalsOrdersService) {
+    private _graphicInTracking: GraphicalsOrdersService, private _socket: Socket) {
     this.lat = this._mapAutocomplete.lat;
     this.lng = this._mapAutocomplete.lng;
     this.zoom = this._mapAutocomplete.zoom;
+    // Conectamos al socket
+    this._socket.on('connect', () => {
+      // Recibimos la data del servidor mediante un socket
+      this._socket.on('TrackingData', (tracking) => {
+        // Ahora mostramos toda esta data en el front con un popup
+        this.OpenDialogTracking(tracking);
+      });
+    });
    }
 
   async ngOnInit() {
@@ -57,6 +75,7 @@ export class MapComponent implements OnInit {
       this.zoom = 12;
     }
     this.loadCustomerOrders();
+    setTimeout((): void => {this.triggerButton(); }, 1000);
   }
 
   private getPosition(): Promise<any> {
@@ -95,7 +114,7 @@ export class MapComponent implements OnInit {
   LoadPLacesTo() {
     this.mapsAPILoader.load().then((): void => {
       const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef2.nativeElement, {
-        types: ['address']
+        types: ['geocode']
       });
       autocomplete.addListener('place_changed', async () => {
         this.ngZone.run(async () => {
@@ -284,11 +303,40 @@ export class MapComponent implements OnInit {
             return;
           }
           this.onTracking = true;
-          console.log(this.GraphicOrders);
           // this._mapAutocomplete.lng = -115.1536815;
           // this._mapAutocomplete.lat = 36.1494499;
         }
       }
     );
   }
+  triggerButton() {
+    if (this.onTracking) {
+      if (this.GraphicOrders.length >= 1) {
+        for (const order of this.GraphicOrders) {
+          $(document).ready((): void => {
+            $(`button[data-bind=${order._id}]`).click((): void => {
+              $('body').hide();
+            });
+          });
+        }
+      }
+    }
+  }
+// Abrimos el contenedor para mostrar la data del servicio
+OpenDialogTracking(RoutingData: any): void {
+  this._calculator.displayPopTax = false;
+  const Popup = this.dialog.open(ServiceComponent, {
+    width: '600px',
+    height: '700px',
+    data: {
+      RoutingData
+    }
+  });
+  Popup.afterClosed().subscribe(
+    (tracking: PartialObserver<any> | any): void => {
+      this._calculator.displayPopTax = true;
+      console.log(tracking);
+    }
+  );
+}
 }

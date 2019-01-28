@@ -76,10 +76,23 @@
         </div>
     </div>
 </div>
-<agm-map [latitude]="_mapAutocomplete.lat" [longitude]="_mapAutocomplete.lng" [zoom]="_mapAutocomplete.zoom">
+<agm-map [styles]="MapStyles" [latitude]="_mapAutocomplete.lat" [longitude]="_mapAutocomplete.lng" [zoom]="_mapAutocomplete.zoom">
     <agm-marker *ngIf="_intelliSense.destiny.lat === 0" [latitude]="lat" [longitude]="lng"></agm-marker>
     <agm-direction [renderOptions]="renderOption" [markerOptions]="markerOptions" *ngIf="_intelliSense.origin.lat !== 0 && _intelliSense.destiny.lat !== 0" [origin]="_intelliSense.origin" [destination]="_intelliSense.destiny"></agm-direction>
     <ng-container *ngIf="onTracking">
-        <agm-direction *ngFor="let tracking of GraphicOrders" [origin]="{lat:tracking.fromLng, lng:tracking.fromLat}" [destination]="{lat:tracking.toLat, lng:tracking.toLng}" [renderOptions]="renderOption" [markerOptions]="markerOptions"></agm-direction>
+        <agm-direction *ngFor="let tracking of GraphicOrders;" [origin]="{lat:tracking.fromLng, lng:tracking.fromLat}" [destination]="{lat:tracking.toLat, lng:tracking.toLng}" [renderOptions]="renderOption" [markerOptions]="{'origin': {
+            'icon': './assets/images/map/destination.png',
+            'draggable': false,
+            'opacity': 1,
+            'infoWindow': '
+            <button onclick=\'GetRoutingId($(this))\' data='+tracking._id+' class=\'btn-primary btn-block btn-success\'>'+ (tracking.serviceStatus | serviceStatus) +'</button>
+            '
+        },
+        'destination': {
+            'icon': './assets/images/map/baseline_zoom_out_map_white_48dp.png',
+            'draggable': false,
+            'opacity': 1
+        }    
+    }"></agm-direction>
     </ng-container>
 </agm-map>

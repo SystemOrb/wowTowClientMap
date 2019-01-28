@@ -1,0 +1,161 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav-content class="text-white Gotham-Book font-18">
+        {{WootowProvider.RoutingData.Tracking.service_ref.create | date}}
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<div class="space-30"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm text-center">
+            <h1 class="Gotham-Medium font-22 text-dark">
+                {{WootowProvider.RoutingData.Tracking.provider.name }}
+            </h1>
+            <div class="row">
+                <div class="col-sm">
+                    <a onclick="return false;" href="#">
+                        <img style="border: 0px; position: relative; left: 1em;" class="img-thumbnail img-circle w-50" src="./assets/images/users/1.jpg" [alt]="WootowProvider.RoutingData.Tracking.provider.name">
+                    </a>
+                    <div class="space-5"></div>
+                    <hr>
+                    <div class="container">
+                        <div style="margin-left: 4em" class="row text-center">
+                            <div class="col-md-2">
+                                <i class="material-icons">
+                                    star_rate
+                                    </i>
+                            </div>
+                            <div class="col-md-2">
+                                <i class="material-icons">
+                                    star_rate
+                                    </i>
+                            </div>
+                            <div class="col-md-2">
+                                <i class="material-icons">
+                                    star_rate
+                                    </i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <a onclick="return false;" href="#">
+                        <img style="border: 0px" class="img-thumbnail w-75" src="./assets/images/users/258white363190017std.jpg" [alt]="WootowProvider.RoutingData.Tracking.customer.car_name">
+                    </a>
+                    <hr>
+                    <button class="circle-radius btn-block" mat-raised-button>
+                        {{ WootowProvider.RoutingData.Tracking.customer.car_plate }}
+                    </button>
+                </div>
+            </div>
+            <div class="space-30"></div>
+            <mat-divider></mat-divider>
+            <mat-toolbar>
+                <span>Travel</span>
+            </mat-toolbar>
+            <div class="space-10"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <i class="material-icons">
+                            my_location
+                            </i>
+                        <span class="font-18 Gotham-Medium">
+                          Origin
+                        </span>
+                    </div>
+                    <div class="col-sm">
+                        <p class="Gotham-Book font-16">
+                            {{WootowProvider.RoutingData.Tracking.fromLng}},{{WootowProvider.RoutingData.Tracking.fromLat}}
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <i class="material-icons">
+                          near_me
+                          </i>
+                        <span class="font-18 Gotham-Medium">
+                            Destiny
+                          </span>
+                    </div>
+                    <div class="col-sm">
+                        <p class="Gotham-Book font-16">
+                            {{WootowProvider.RoutingData.Tracking.toLat}},{{WootowProvider.RoutingData.Tracking.toLng}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="space-20"></div>
+            <mat-tab-group>
+                <mat-tab label="Travel">
+                    <div class="space-10"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <span class="font-16 Gotham-Medium">
+                                    Placa
+                                </span>
+                            </div>
+                            <div class="col-sm">
+                                <button class="circle-radius" mat-raised-button>
+                                    {{WootowProvider.RoutingData.Tracking.customer.car_plate}}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="space-10"></div>
+                        <mat-divider></mat-divider>
+                        <div class="row">
+                            <div class="col-sm">
+                                <span class="font-16 Gotham-Medium">
+                                    Colour
+                                </span>
+                            </div>
+                            <div class="col-sm">
+                                <button class="circle-radius" mat-raised-button>
+                                    {{WootowProvider.RoutingData.Tracking.customer.car_colour}}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="space-10"></div>
+                        <mat-divider></mat-divider>
+                        <div class="row">
+                            <div class="col-sm">
+                                <span class="font-16 Gotham-Medium">
+                                    Modelo
+                                </span>
+                            </div>
+                            <div class="col-sm">
+                                <button class="circle-radius" mat-raised-button>
+                                    {{WootowProvider.RoutingData.Tracking.customer.car_name}} - {{WootowProvider.RoutingData.Tracking.customer.car_model}}
+                                </button>
+                            </div>
+                        </div>
+                        <div class="space-20"></div>
+                        <div class="row">
+                            <div class="col-sm text-center">
+                                <button class="btn-block" mat-raised-button color="warn">
+                                       Cancelar viaje 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Wootow Provider">
+                    <div class="space-30"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm text-center">
+                                <button style="background-color: rgba(248, 236, 50, 1) !important" class="btn-block text-dark font-16 Gotham-Book" mat-raised-button color="primary">
+                                        <i class="material-icons">
+                                                local_phone
+                                        </i>
+                                            Llamar al conductor
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

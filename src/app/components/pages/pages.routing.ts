@@ -8,12 +8,12 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 const routes: Routes = [
-    {path: 'home', component: MapComponent},
+    {path: '', component: MapComponent},
     {path: 'history', component: HistoryComponent},
     {path: 'notification', component: NotificationComponent},
     {path: 'support', component: SupportComponent},
     {path: 'profile', component: ProfileComponent},
-    { path: '', pathMatch: 'full', redirectTo: '/home' }
+    { path: '', pathMatch: 'full', redirectTo: '/' }
 ];
 
 @NgModule({

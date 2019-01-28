@@ -24,3 +24,11 @@
     background-color: rgb(248, 236, 50);
     border: 0px;
 }
+
+.bg-success {
+    background-color: #09c509;
+}
+
+.bg-invalid {
+    background-color: #f26c4f;
+}

@@ -20,6 +20,8 @@ export class AuthService {
   public wowTowCustomer: CustomerAfiliated;
   public token: string;
   public _id: string;
+  public invalidCredential: boolean = true;
+  public canshow: boolean = false;
   saveStorage(customer: CustomerAfiliated, token: string, _id: string): boolean {
     // Saved this customer on cache
     localStorage.setItem('wowtowCustomer', JSON.stringify(customer));
@@ -32,17 +34,14 @@ export class AuthService {
   }
   // Load storage
   loadStorage() {
-    this.wowTowCustomer = JSON.parse(localStorage.getItem('wowtowCustomer')) || '';
+    this.wowTowCustomer = JSON.parse(localStorage.getItem('wowtowCustomer')) || null;
     this.token = localStorage.getItem('token') || '';
     this._id = localStorage.getItem(this._id) || '';
   }
   // Verify Login Guard
   logged(): boolean {
-    if (this._id === '' || this._id === undefined || this._id === null) {
-      return false;
-    } else {
-      return true;
-    }
+    return (this.wowTowCustomer !== null && this.wowTowCustomer !== undefined) ? true : false;
+
   }
   // Logout customer
   logout() {
@@ -57,9 +56,18 @@ export class AuthService {
   login(customer: Client) {
     return this._http.post(`${ENVIROMENT_LOCAL}/client/login/auth`, customer).pipe(
       map((response: any) => {
+        if (response.status) {
+          setTimeout((): void => {
+            this.invalidCredential = false;
+          }, 500);
+          this.canshow = true;
+        }
         return response;
       }),
       catchError( (err: any)  => {
+        setTimeout((): void => {
+          this.invalidCredential = true;
+        }, 500);
         this.matSnack.open('Ops! some credentials has been invalid', 'Try again!', {duration: 1000000});
         return new Observable<string | boolean>();
       })

@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './customer/auth.service';
 import { AngularMaterialModule } from '../angular-material.module';
 import { GraphicalsOrdersService } from './maps/graphicals-orders.service';
+import { AuthGuard } from './guards/auth.guard';
+import { ProviderProfileService } from './providers/provider-profile.service';
 
 @NgModule({
   imports: [
@@ -19,7 +21,9 @@ import { GraphicalsOrdersService } from './maps/graphicals-orders.service';
     CalculatorService,
     NotAfiliatedService,
     AuthService,
-    GraphicalsOrdersService
+    GraphicalsOrdersService,
+    AuthGuard,
+    ProviderProfileService
   ],
   declarations: [],
   exports: []

@@ -10,6 +10,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +30,13 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDialogModule,
     MatBadgeModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatBottomSheetModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatTableModule
   ],
   exports: [
     MatButtonModule,
@@ -38,7 +50,13 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDialogModule,
     MatBadgeModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    MatBottomSheetModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatTableModule
   ],
   declarations: []
 })

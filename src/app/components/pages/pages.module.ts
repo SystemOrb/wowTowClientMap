@@ -8,11 +8,18 @@ import { RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile/profile.component';
 import { PagesRoutingModule } from './pages.routing';
 import { AgmCoreModule } from '@agm/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { AgmDirectionModule } from 'agm-direction';
 import { TaxDialogComponent } from './map/tax-dialog.component';
 import { AngularMaterialModule } from '../../angular-material.module';
 import { DecimalPipe } from '../../services/pipes/decimal.pipe';
+import { ServiceStatusPipe } from '../../services/pipes/service-status.pipe';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { ServiceComponent } from './map/service.component';
+const config: SocketIoConfig = {
+  url: 'http://localhost:8080',
+  options: {'query': 'session=' + localStorage.getItem('_id') + '&authType=appCustomer'}
+};
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +31,8 @@ import { DecimalPipe } from '../../services/pipes/decimal.pipe';
     }),
     AgmDirectionModule,
     FormsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    SocketIoModule.forRoot(config)
   ],
   declarations: [
     HistoryComponent,
@@ -33,8 +41,14 @@ import { DecimalPipe } from '../../services/pipes/decimal.pipe';
     NotificationComponent,
     SupportComponent,
     ProfileComponent,
-    DecimalPipe
+    DecimalPipe,
+    ServiceStatusPipe,
+    ServiceComponent
   ],
-  entryComponents: [TaxDialogComponent, MapComponent]
+  entryComponents: [
+    TaxDialogComponent,
+    MapComponent,
+    ServiceComponent
+  ]
 })
 export class PagesModule { }
